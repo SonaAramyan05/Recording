@@ -54,8 +54,6 @@ export const Settings: FC = () => {
                     value={selectedMicId || selectedMic?.deviceId}
                     onChange={handleMicChange}
                 >
-                    <option value="">Select Microphone</option>
-                    {/* Map over microphone devices and render options */}
                     {mics.map((mic) => (
                         <option key={mic.deviceId} value={mic.deviceId}>
                             {mic.label}
@@ -70,8 +68,6 @@ export const Settings: FC = () => {
                     value={selectedCameraId || selectedCamera?.deviceId}
                     onChange={handleCameraChange}
                 >
-                    <option value="">Select Camera</option>
-                    {/* Map over camera devices and render options */}
                     {cameras.map((camera) => (
                         <option key={camera.deviceId} value={camera.deviceId}>
                             {camera.label}

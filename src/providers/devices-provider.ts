@@ -1,4 +1,10 @@
-import { setCameras, setMics, setSpeakers } from "../store/shared/shared-slice";
+import {
+    setCameras,
+    setMics,
+    setSelectedCamera,
+    setSelectedMic,
+    setSpeakers,
+} from "../store/shared/shared-slice";
 import { store } from "../store";
 
 class DevicesProvider {
@@ -39,6 +45,17 @@ class DevicesProvider {
             store.dispatch(setMics(mics));
             store.dispatch(setCameras(cameras));
             store.dispatch(setSpeakers(speakers));
+
+            const selectedMic = store.getState().shared.micInfo.selectedMic;
+            if (!selectedMic && mics.length > 0) {
+                store.dispatch(setSelectedMic(mics[0]));
+            }
+
+            const selectedCamera =
+                store.getState().shared.cameraInfo.selectedCamera;
+            if (!selectedCamera && cameras.length > 0) {
+                store.dispatch(setSelectedCamera(cameras[0]));
+            }
         });
     }
 }
